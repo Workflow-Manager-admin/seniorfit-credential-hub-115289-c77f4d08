@@ -22,6 +22,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // For application-wide providers, modals, static styles, etc (DO NOT render AppLayout here)
+  // AppLayout is applied per-page for main routes only (see /dashboard, etc)
   return (
     <html lang="en">
       <body

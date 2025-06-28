@@ -1,0 +1,45 @@
+
+> nextjs@0.1.0 dev
+> next dev -p 3000 -H 0.0.0.0
+
+   ▲ Next.js 15.2.3
+   - Local:        http://localhost:3000
+   - Network:      http://0.0.0.0:3000
+
+ ✓ Starting...
+ ✓ Ready in 1545ms
+ ○ Compiling / ...
+ ✓ Compiled / in 4.3s (744 modules)
+ GET / 200 in 4674ms
+ ⚠ Blocked cross-origin request from vscode-internal-1057-beta.beta01.cloud.kavia.ai. To allow this, configure "allowedDevOrigins" in next.config
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET / 200 in 41ms
+ GET / 200 in 32ms
+ GET / 200 in 31ms
+ GET / 200 in 36ms
+ GET / 200 in 33ms
+ GET / 200 in 35ms
+ ✓ Compiled in 269ms (331 modules)
+ ✓ Compiled in 135ms (331 modules)
+ ✓ Compiled in 107ms (331 modules)
+ ✓ Compiled in 207ms (712 modules)
+ ✓ Compiled in 148ms (331 modules)
+ ✓ Compiled in 273ms (726 modules)
+ ✓ Compiled in 113ms (331 modules)
+ ✓ Compiled in 116ms (712 modules)
+ ✓ Compiled in 138ms (331 modules)
+ ✓ Compiled in 101ms (712 modules)
+ ✓ Compiled in 94ms (331 modules)
+ ✓ Compiled in 95ms (712 modules)
+ ✓ Compiled in 102ms (331 modules)
+ ✓ Compiled in 99ms (331 modules)
+ ✓ Compiled in 205ms (726 modules)
+ ✓ Compiled in 101ms (331 modules)
+ ✓ Compiled in 96ms (712 modules)
+ ✓ Compiled in 117ms (331 modules)
+ ✓ Compiled in 195ms (712 modules)
+ ✓ Compiled in 101ms (331 modules)
+ ✓ Compiled in 91ms (712 modules)
+ ✓ Compiled in 345ms (726 modules)
+ ✓ Compiled in 135ms (331 modules)
+ ✓ Compiled in 116ms (331 modules)
