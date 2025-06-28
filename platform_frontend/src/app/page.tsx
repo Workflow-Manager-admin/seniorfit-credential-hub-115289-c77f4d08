@@ -1,100 +1,190 @@
-import Image from "next/image";
+"use client";
+import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
+import Link from "next/link";
+import React from "react";
+
+// PUBLIC_INTERFACE
+/**
+ * Home/Landing page for SeniorFit Credential Hub.
+ * Welcoming platform summary and navigation, using accessible Cards/Buttons.
+ * All major feature areas summarized and linked; visually senior-friendly and a11y.
+ * Placeholders for future feature previews/quick actions are clearly commented.
+ */
+
+const FEATURES = [
+  {
+    name: "Dashboard",
+    description:
+      "Visual overview of your credentials, certification journey, and suggested next steps.",
+    href: "/dashboard",
+    cta: "Go to Dashboard",
+    icon: "📊",
+    ariaLabel: "Dashboard summary",
+    color: "primary",
+  },
+  {
+    name: "Courses",
+    description:
+      "Browse, enroll, and access comprehensive SeniorFit certification tracks.",
+    href: "/courses",
+    cta: "View Courses",
+    icon: "🎓",
+    ariaLabel: "Courses summary",
+    color: "secondary",
+  },
+  {
+    name: "Payments",
+    description:
+      "Manage subscriptions, invoices, and payment options securely (Stripe-powered).",
+    href: "/payments",
+    cta: "Payment Center",
+    icon: "💳",
+    ariaLabel: "Payments summary",
+    color: "accent",
+  },
+  {
+    name: "Assessments",
+    description:
+      "Complete quizzes, assignments, and case studies to earn credentials and badges.",
+    href: "/assessments",
+    cta: "Begin Assessments",
+    icon: "📝",
+    ariaLabel: "Assessments summary",
+    color: "primary",
+  },
+  {
+    name: "Library",
+    description:
+      "Search and explore a media-rich library of senior-safe exercises and guides.",
+    href: "/library",
+    cta: "Open Library",
+    icon: "🏋️‍♂️",
+    ariaLabel: "Library summary",
+    color: "secondary",
+  },
+  {
+    name: "Jobs",
+    description:
+      "Search and apply to roles for certified SeniorFit specialists. Track application progress.",
+    href: "/jobs",
+    cta: "Job Board",
+    icon: "💼",
+    ariaLabel: "Jobs summary",
+    color: "accent",
+  },
+  {
+    name: "Specializations",
+    description:
+      "Deepen expertise in niche tracks, such as arthritis, balance, cognitive health, and more.",
+    href: "/specializations",
+    cta: "See Tracks",
+    icon: "🏅",
+    ariaLabel: "Specializations summary",
+    color: "primary",
+  },
+  {
+    name: "Community",
+    description:
+      "Join forums, connect with peers, exchange advice, and find support in the SeniorFit network.",
+    href: "/community",
+    cta: "Go to Community",
+    icon: "🗨️",
+    ariaLabel: "Community summary",
+    color: "secondary",
+  },
+  {
+    name: "Events",
+    description:
+      "Participate in live webinars, training sessions, and upcoming SeniorFit events.",
+    href: "/events",
+    cta: "See Events",
+    icon: "📅",
+    ariaLabel: "Events summary",
+    color: "accent",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="min-h-screen pt-8 pb-12 bg-background text-foreground flex flex-col items-center font-sans">
+      {/* Welcome section */}
+      <header className="w-full max-w-4xl px-4 mb-7 sm:mb-12 text-center flex flex-col items-center">
+        <span className="text-4xl sm:text-5xl font-extrabold mt-2" aria-label="SeniorFit Logo" style={{ color: "var(--color-accent)" }}>
+          🏋️ SeniorFit Credential Hub
+        </span>
+        <h1 className="text-2xl sm:text-3xl font-bold text-primary mt-4 mb-1">
+          Empowering Fitness Professionals for Senior Wellness
+        </h1>
+        <p className="mt-2 max-w-2xl text-lg sm:text-xl mx-auto leading-relaxed">
+          Your journey to expert certification, community, and career advancement begins here.
+          <br />
+          <span className="font-semibold text-accent">Designed for accessibility and easy navigation—for every age and ability.</span>
+        </p>
+      </header>
+      {/* Card grid for features */}
+      <section
+        className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-7 px-3"
+        aria-label="Main features and navigation"
+      >
+        {FEATURES.map((feature) => (
+          <Card
+            key={feature.name}
+            ariaLabel={feature.ariaLabel}
+            className={`flex flex-col min-h-[240px] justify-between gap-2 shadow-card transition-transform hover:scale-[1.025] focus-within:ring-2 focus-within:ring-accent outline-none`}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+            <div className="flex items-center gap-3 mb-2">
+              <span
+                className="text-3xl mr-2"
+                aria-hidden
+                style={{
+                  textShadow: "0 1px 4px #0002",
+                  color: feature.color === "primary"
+                    ? "var(--color-primary)"
+                    : feature.color === "secondary"
+                    ? "var(--color-secondary)"
+                    : "var(--color-accent)",
+                }}
+              >
+                {feature.icon}
+              </span>
+              <h2 className="text-xl sm:text-2xl font-bold leading-tight" style={{
+                color: feature.color === "primary"
+                  ? "var(--color-primary)"
+                  : feature.color === "secondary"
+                  ? "var(--color-secondary)"
+                  : "var(--color-accent)",
+              }}>
+                {feature.name}
+              </h2>
+            </div>
+            <p
+              className="flex-1 mb-3 text-base sm:text-lg leading-relaxed"
+              style={{ fontSize: "1.1rem", minHeight: 58 }}
+            >
+              {feature.description}
+              {/* TODO: Insert detailed {feature.name} preview or quick actions here (e.g., progress bar, new notifications, featured items). */}
+            </p>
+            <Link href={feature.href} tabIndex={-1} passHref legacyBehavior>
+              <a className="w-full focus:outline-none">
+                <Button
+                  variant={feature.color === "primary"
+                    ? "primary"
+                    : feature.color === "secondary"
+                    ? "secondary"
+                    : "accent"}
+                  className="w-full mt-auto py-3 text-lg"
+                  ariaLabel={feature.cta}
+                >
+                  {feature.cta}
+                </Button>
+              </a>
+            </Link>
+          </Card>
+        ))}
+      </section>
+      <footer className="w-full max-w-3xl mt-16 text-center text-base text-foreground/80 px-6 pt-7 border-0 border-t border-solid border-primary/15">
+        SeniorFit Credential Hub &copy; {new Date().getFullYear()}. <span className="text-accent font-semibold">Your path to senior wellness leadership starts here.</span>
       </footer>
     </div>
   );
