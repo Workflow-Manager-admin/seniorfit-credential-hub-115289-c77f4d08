@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
+/* 
+  GLOBAL COLOR PALETTE & THEME VARIABLES
+  - Used by Tailwind and custom CSS for brand consistency and accessible senior-friendly design
+  - WCAG 2.1 AA colors and readable font sizes
+  - Updated for SeniorFit Credential Hub
+*/
+
 :root {
+  --color-primary: #1976d2;
+  --color-secondary: #43a047;
+  --color-accent: #fbc02d;
   --background: #ffffff;
   --foreground: #171717;
-}
+  --border-radius: 0.75rem;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --button-font-size: 1.25rem;
+  --input-font-size: 1.125rem;
+  --card-font-size: 1.15rem;
+  --modal-font-size: 1.18rem;
+
+  --shadow-md: 0 2px 8px 0 #0002;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --color-primary: #90caf9;
+    --color-secondary: #81c784;
+    --color-accent: #fff176;
   }
 }
 
+/* Standalone theme references for light/dark toggling */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans, Arial, sans-serif);
+  --font-mono: var(--font-geist-mono, monospace);
+}
+
+/* Base font and body styling for accessibility */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-size: 1.125rem; /* ~18px - readable for seniors */
+  font-weight: 450;
+  letter-spacing: 0.01em;
 }
+
+/* Utility focus outline for accessibility visibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Headings with strong contrast and generous spacing */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  color: var(--color-primary);
+}
+h1 { font-size: 2.15rem; }
+h2 { font-size: 1.65rem; }
+h3 { font-size: 1.35rem; }
+
+/* Gentle card, button, input base resets for UI kit (with Tailwind) */
